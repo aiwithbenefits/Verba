@@ -20,7 +20,7 @@ class OpenAIGenerator(Generator):
         self.description = "Using OpenAI LLM models to generate answers to queries"
         self.context_window = 10000
 
-        models = ["gpt-4o", "gpt-3.5-turbo"]
+        models = ["gpt-4o", "gpt-4o-mini"]
 
         self.config["Model"] = InputConfig(
             type="dropdown",
@@ -52,7 +52,7 @@ class OpenAIGenerator(Generator):
         conversation: list[dict] = [],
     ):
         system_message = config.get("System Message").value
-        model = config.get("Model", {"value": "gpt-3.5-turbo"}).value
+        model = config.get("Model", {"value": "gpt-4o-mini"}).value
         openai_key = get_environment(
             config, "API Key", "OPENAI_API_KEY", "No OpenAI API Key found"
         )
